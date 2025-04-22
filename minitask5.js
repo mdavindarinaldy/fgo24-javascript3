@@ -21,13 +21,7 @@ function queue(name, time) {
     })
 }
 
-for (let i = 0; i < person.length; i++) {
-    queue(person[i].name, person[i].time).then(function(result){
-        console.log(result)
-    }).catch(function(err){
-        console.log(err)
-    })
-}
+// then-catch
 
 // queue("John",1500).then(function(result){
 //     console.log(result)
@@ -45,5 +39,38 @@ for (let i = 0; i < person.length; i++) {
 //     console.log(result)
 // })
 
-//console.time
-//console.timeend???
+// async-await
+
+async function handling(name, time) {
+    try {
+        const result = await queue(name, time)
+        console.log(result)
+    } catch(err) {
+        console.log(err)
+    }
+}
+
+async function loopHandling() {
+    for (let i = 0; i < person.length; i++) {
+        let result = await handling(person[i].name, person[i].time)
+    }
+}
+
+// async function handling2(name, time) {
+//     try {
+//         const results = await Promise.allSettled([
+//             queue("John", 2000),
+//             queue("Ed", 1500),
+//             queue("Jane", 500),
+//         ])
+//         // results.forEach(result => {
+//         //     console.log(result.name)
+//         // });
+//         console.log(results)
+//     } catch(err) {
+//         console.log(err)
+//     }
+// }
+
+loopHandling()
+//handling2()
