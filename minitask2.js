@@ -166,13 +166,13 @@ console.log(str2.concat(", ", str1)); // Output: "World, Hello"
 
 // 14.) String.at()
 
-const sentence = "The quick brown fox jumps over the lazy dog.";
+const sentence2 = "The quick brown fox jumps over the lazy dog.";
 
 let index = 5;
-console.log(`An index of ${index} returns the character ${sentence.at(index)}`); // Output: "An index of 5 returns the character u"
+console.log(`An index of ${index} returns the character ${sentence2.at(index)}`); // Output: "An index of 5 returns the character u"
 
 index = -4;
-console.log(`An index of ${index} returns the character ${sentence.at(index)}`); // Output: "An index of -4 returns the character d"
+console.log(`An index of ${index} returns the character ${sentence2.at(index)}`); // Output: "An index of -4 returns the character d"
 
 // Penjelasan: at() dalam string mengembalikan nilai string baru yang berisikan satu karakter UTF-16 code yang berindeks spesifik 
 // (ditentukan dalam parameter). Metode ini memungkinkan menggunakan parameter yang bernilai positif ataupun negatif. Jika indeks
