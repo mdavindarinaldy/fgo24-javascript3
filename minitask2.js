@@ -237,3 +237,71 @@ console.log(`I feel ${mood.repeat(3)}`); // Output: "I feel Happy! Happy! Happy!
 
 // 5 Built-in Function
 
+// 1.) parseInt()
+
+console.log(parseInt("123")); // 123 (default base-10)
+console.log(parseInt("123", 10)); // 123 (explicitly specify base-10)
+console.log(parseInt("   123 ")); // 123 (whitespace is ignored)
+console.log(parseInt("077")); // 77 (leading zeros are ignored)
+console.log(parseInt("1.9")); // 1 (decimal part is truncated)
+console.log(parseInt("ff", 16)); // 255 (lower-case hexadecimal)
+console.log(parseInt("0xFF", 16)); // 255 (upper-case hexadecimal with "0x" prefix)
+console.log(parseInt("xyz")); // NaN (input can't be converted to an integer)
+
+// Penjelasan : parseInt(string, radix) adalah fungsi untuk mengubah string menjadi integer/number. Parameter string diisi oleh string yang
+// akan diubah menjadi number, sedangkan parameter radix merepresentasikan basis di sistem numeral matematikal. Nilai default radix adalah 10
+// (decimal), 16 = hexadecimal. Spasi, angka 0 didepan akan diabaikan. Bilangan desimal akan dibulatkan kebawah.
+
+// 2.) isNaN()
+
+function milliseconds(x) {
+    if (isNaN(x)) {
+      return "Not a Number!";
+    }
+    return x * 1000;
+  }
+  
+console.log(milliseconds("100F")); // Output: "Not a Number!"
+console.log(milliseconds("0.0314E+2")); // Output: 3140
+
+// Penjelasan : isNaN(value) adalah fungsi untuk mengecek apakah parameter value merupakan NaN (Not a Number) atau bukan. isNaN() awalnya akan
+// mengkonversikan value tersebut menjadi number terlebih dahulu jika dibutuhkan. Akan mengembalikan nilai true jika value yang diberikan berupa 
+// NaN walaupun setelah dikonversikan menjadi number.
+
+// 3.) encodeURI()
+
+const uri = "https://mozilla.org/?x=шеллы";
+const encoded = encodeURI(uri);
+console.log(encoded); // Output: "https://mozilla.org/?x=%D1%88%D0%B5%D0%BB%D0%BB%D1%8B"
+
+// Penjelasan : encodeURI() merupakan fungsi untuk encode (membuat sandi) dari URI (Uniform Resource Identifier) dengan cara mengganti setiap
+// instance dari suatu karakter dengan satu, dua, tiga, atau empat escape sequences yang merepresentasikan UTF-8 dari karakter yang diencode.
+// Mengembalikan nilai string.
+
+// 4.) decodeURI()
+
+try {
+    console.log(decodeURI(encoded)); // Output: "https://mozilla.org/?x=шеллы"
+  } catch (e) { // Catches a malformed URI
+    console.error(e);
+  }
+
+// Penjelasan : decodeURI() merupakan fungsi yang meng-decode URI yang sebelumnya telah di-encode. Mengembalikan nilai string. 
+
+// 5.) isFinite()
+
+function div(x) {
+    if (isFinite(1000 / x)) {
+      return "Number is NOT Infinity.";
+    }
+    return "Number is Infinity!";
+  }
+  
+console.log(div(0)); // Output: "Number is Infinity!""
+console.log(div(1)); // Output: "Number is NOT Infinity."
+
+// Penjelasan : isFinite(value) merupakan fungsi yang mengecek apakah parameter value bersifat terhingga atau finite. isFinite()
+// akan mengkonversikan value menjadi number terlebih dahulu jika diperlukan. Akan mengembalikan nilai boolean, true jika value
+// finite, false jika value NaN, infinity (bilangan tak terhingga, baik yang negatif maupun positif)
+
+
